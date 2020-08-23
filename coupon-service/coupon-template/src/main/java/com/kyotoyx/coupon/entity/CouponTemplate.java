@@ -1,5 +1,6 @@
 package com.kyotoyx.coupon.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.kyotoyx.coupon.constant.CouponCategory;
 import com.kyotoyx.coupon.constant.DistributeTarget;
 import com.kyotoyx.coupon.constant.ProductLine;
@@ -7,6 +8,7 @@ import com.kyotoyx.coupon.converter.CouponCategoryConverter;
 import com.kyotoyx.coupon.converter.DistributeTargetConverter;
 import com.kyotoyx.coupon.converter.ProductLineConverter;
 import com.kyotoyx.coupon.converter.TemplateRuleConverter;
+import com.kyotoyx.coupon.serialization.CouponTemplateSerializer;
 import com.kyotoyx.coupon.vo.TemplateRule;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +27,7 @@ import java.util.Date;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "coupou-template")
+@JsonSerialize(using = CouponTemplateSerializer.class)
 public class CouponTemplate implements Serializable {
 
     @Id
