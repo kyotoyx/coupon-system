@@ -3,6 +3,10 @@ package com.kyotoyx.coupon.entity;
 import com.kyotoyx.coupon.constant.CouponCategory;
 import com.kyotoyx.coupon.constant.DistributeTarget;
 import com.kyotoyx.coupon.constant.ProductLine;
+import com.kyotoyx.coupon.converter.CouponCategoryConverter;
+import com.kyotoyx.coupon.converter.DistributeTargetConverter;
+import com.kyotoyx.coupon.converter.ProductLineConverter;
+import com.kyotoyx.coupon.converter.TemplateRuleConverter;
 import com.kyotoyx.coupon.vo.TemplateRule;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,9 +48,11 @@ public class CouponTemplate implements Serializable {
     private String description;
 
     @Column(name = "category", nullable = false)
+    @Convert(converter = CouponCategoryConverter.class)
     private CouponCategory category;
 
     @Column(name = "product_line", nullable = false)
+    @Convert(converter = ProductLineConverter.class)
     private ProductLine productLine;
 
     @Column(name = "coupon_count", nullable = false)
@@ -63,9 +69,11 @@ public class CouponTemplate implements Serializable {
     private String key;
 
     @Column(name = "target", nullable = false)
+    @Convert(converter = DistributeTargetConverter.class)
     private DistributeTarget target;
 
     @Column(name = "rule", nullable = false)
+    @Convert(converter = TemplateRuleConverter.class)
     private TemplateRule rule;
 
     public CouponTemplate(String name, String logo, String description, String category, Integer productLine, Integer count, Long userId, Integer target, TemplateRule rule) {
