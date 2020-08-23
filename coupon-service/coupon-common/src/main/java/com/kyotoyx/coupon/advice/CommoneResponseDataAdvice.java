@@ -35,7 +35,6 @@ public class CommoneResponseDataAdvice implements ResponseBodyAdvice<Object> {
         CommonResponse<Object> response = new CommonResponse<>(
                 0, ""
         );
-
         if (null == o) {
             return response;
         } else if (o instanceof CommonResponse) {
