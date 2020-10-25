@@ -69,4 +69,10 @@ public class TemplateRule {
             return StringUtils.isNotEmpty(goodType);
         }
     }
+
+    public boolean validate() {
+        return expiration.validate() && discount.validate() && limitation > 0
+                && usage.validate()
+                && StringUtils.isEmpty(weight);
+    }
 }
